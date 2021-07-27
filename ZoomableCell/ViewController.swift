@@ -22,15 +22,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollectionView()
+        
+        setupCollectionView()
         setupLayout()
-
+        layout.setupCollectionViewPan()
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setupLayout()
+    }
+    
     
     //MARK: - Methods
     
-
-    private func configureCollectionView() {
+    private func setupCollectionView() {
+        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(Cell.self, forCellWithReuseIdentifier: Cell.id)
         collectionView.dataSource = self
@@ -49,15 +56,14 @@ class ViewController: UIViewController {
     //MARK: - Layout
     
     private func setupLayout() {
-        layout.itemSize = CGSize(width: view.frame.width/4, height: view.frame.width/4)
-        layout.setupCollectionViewPan()
+        layout.itemSize = CGSize(width: view.frame.width/3.5, height: view.frame.width/3.5)
     }
     
 }
 
 
-//MARK: - Extensions
 
+//MARK: - Extensions
 
 extension ViewController: UICollectionViewDataSource {
     

@@ -8,7 +8,7 @@
 import UIKit
 
 class PinchFlowLayout: UICollectionViewFlowLayout {
-
+    
     
     //MARK: - Properties
     
@@ -20,14 +20,6 @@ class PinchFlowLayout: UICollectionViewFlowLayout {
     
     
     //MARK: - LifeCycle Methods
-    
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        
-        let attributes = super.layoutAttributesForItem(at: indexPath)
-        return attributes
-    }
-    
-    
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
@@ -97,10 +89,9 @@ class PinchFlowLayout: UICollectionViewFlowLayout {
             setPinchedCellCenter(origin: sender.location(in: collectionView))
             
         case .ended:
-            //   UIView.animate(withDuration: 1) {
             self.setPinchedCellScale(scale: 1)
             self.setPinchedCellCenter(origin: self.initialLocation!)
-        //   }
+            
         default:
             break
         }
